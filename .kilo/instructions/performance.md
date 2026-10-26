@@ -10,6 +10,17 @@ Achieve 100 in web performance metrics. Static site, minimal JS, fast loading.
 - Max 6 props per component
 - Prefer slots over excessive props
 
+## Design System
+- Mobile first: write base styles for small screens, use min-width breakpoints to scale
+- Single source of truth: all colors, fonts, font sizes, weights, spacing, radii, shadows must live as CSS variables
+- Variables only: never hardcode hex, rgb, font-family names or fixed px for tokens in components
+- Minimal palette: define semantic tokens only (bg, surface, text-primary, text-secondary, accent, border)
+- Minimal scale: limit font sizes, weights and spacing to a small curated scale
+- Use CSS variables with @theme inline to map to Tailwind
+- Keep visual coherence across breakpoints
+- Ensure functionality and layout remain intact on mobile, tablet and desktop
+- Use relative units (rem, em, %) and clamp() when fluid scaling is needed
+
 ## Performance
 - Static output only
 - Avoid client-side JS unless absolutely necessary
@@ -26,9 +37,10 @@ Achieve 100 in web performance metrics. Static site, minimal JS, fast loading.
 - DRY principle
 - No comments unless logic is complex
 - No icons/emojis/special characters
-- Use CSS variables
-- Prefer Tailwind utilities
-- Avoid arbitrary Tailwind values when possible
+- Use CSS variables for all design tokens
+- Prefer Tailwind utilities backed by CSS variables
+- Avoid arbitrary Tailwind values - extend theme instead
+- Use rem/em for scalable sizing
 
 ## Data Structure
 Create src/data/ with:
@@ -43,6 +55,7 @@ Create src/data/ with:
 - Split by single responsibility
 - Use semantic HTML
 - Minimize DOM nodes
+- Responsive with mobile-first breakpoints
 
 ## Build
 - Check bundle size

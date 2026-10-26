@@ -1,0 +1,112 @@
+---
+const slides = [
+  {
+    title: "Logerint",
+    subtitle: "Aventura y puzle top down",
+    desc: "Explora un bosque vivo de madera y hojas. Resuelve puzles, descubre secretos y avanza en una aventura silenciosa entre raíces y sombras.",
+    bg: "/images/BG2.jpg",
+  },
+  {
+    title: "Raíces y sombras",
+    subtitle: "El bosque es tu mayor aliado",
+    desc: "Cada hoja oculta una pista. Cada tronco guarda un secreto esperando ser descubierto.",
+    bg: "/images/BG2.jpg",
+  },
+  {
+    title: "Madera y misterio",
+    subtitle: "Resuelve, avanza, sobrevive",
+    desc: "Puzles de entorno integrados en la naturaleza. Nada es lo que parece a simple vista.",
+    bg: "/images/BG2.jpg",
+  },
+];
+---
+
+<section id="banner" class="relative min-h-[90vh] overflow-hidden group">
+  {slides.map((slide, i) => (
+    <div id={`slide-${i}`} class={`absolute inset-0 flex items-center justify-center px-6 z-10 transition-opacity duration-700 ease-in-out ${i === 0 ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+      <div class="absolute inset-0 w-full h-full -z-10">
+        <img
+          src={slide.bg}
+          alt=""
+          class="w-full h-full object-cover object-center group-hover:blur-md transition-[filter] duration-1000 ease-out"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0b100b]/70 via-[#0a0908]/80 to-[#0a0908]" />
+      </div>
+
+      <div class="relative z-20 text-center max-w-6xl mx-auto flex flex-col items-center">
+        <span
+          class="inline-block px-4 py-1.5 rounded-full bg-[#110f0d]/80 border border-[#374151]/40 backdrop-blur-sm text-[#6ee7b7] text-xs font-semibold uppercase tracking-widest mb-6 data-animate"
+          style="animation-delay: 0s"
+        >
+          {slide.subtitle}
+        </span>
+        <h1 class="text-5xl md:text-8xl font-extrabold text-white tracking-tight leading-none mb-4 data-animate" style="animation-delay: 0.15s">
+          {slide.title}
+        </h1>
+        <p class="text-slate-300 text-lg md:text-xl  mx-auto mb-8 leading-relaxed data-animate" style="animation-delay: 0.3s">
+          {slide.desc}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center data-animate" style="animation-delay: 0.45s">
+          <a href="#" class="px-8 py-3 bg-[#f59e0b] text-[#0a0908] font-bold rounded-xl hover:bg-[#b45309] transition">Jugar ahora</a>
+          <a href="#historia" class="px-8 py-3 bg-transparent border border-slate-600 text-slate-200 font-medium rounded-xl hover:bg-slate-800/50 transition">Historia</a>
+        </div>
+      </div>
+    </div>
+  ))}
+</section>
+
+<style>
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  [data-animate] {
+    animation: slideIn 0.7s ease-out forwards;
+    opacity: 0;
+  }
+</style>
+
+<script>
+  const slides = Array.from(document.querySelectorAll("#banner > div"));
+  let current = 0;
+  let interval;
+
+  function animateElements(el) {
+    const items = el.querySelectorAll("[data-animate]");
+    items.forEach((it) => {
+      it.classList.remove("data-animate");
+      void it.offsetHeight;
+      it.classList.add("data-animate");
+    });
+  }
+
+  function showSlide(index) {
+    slides.forEach((s, i) => {
+      if (i === index) {
+        s.classList.remove("opacity-0", "pointer-events-none");
+        s.classList.add("opacity-100");
+      } else {
+        s.classList.remove("opacity-100");
+        s.classList.add("opacity-0", "pointer-events-none");
+      }
+    });
+    current = index;
+    animateElements(slides[index]);
+  }
+
+  function nextSlide() {
+    showSlide((current + 1) % slides.length);
+  }
+
+  interval = setInterval(nextSlide, 5000);
+
+  const banner = document.getElementById("banner");
+  banner?.addEventListener("mouseenter", () => clearInterval(interval));
+  banner?.addEventListener("mouseleave", () => {
+    interval = setInterval(nextSlide, 5000);
+  });
+
+  animateElements(slides[0]);
+</script>

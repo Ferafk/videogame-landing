@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 interface Props {
   titulo: string;
 }
@@ -13,7 +15,7 @@ const { titulo } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{titulo}</title>
   </head>
-  <body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-sky-500 selection:text-white">
+  <body class="bg-[#0a0908] text-slate-100 min-h-screen antialiased selection:bg-[#f59e0b] selection:text-white">
     <!-- Aquí se inyectará el contenido de cada página -->
     <slot />
   </body>

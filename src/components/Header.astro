@@ -1,0 +1,69 @@
+---
+---
+
+<header class="fixed w-full top-0 z-50 bg-[#0a0908]/90 border-b border-[#1f2933]/40">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
+    <a href="#" class="flex items-center gap-2 z-20">
+      <span class="text-[#6ee7b7] font-extrabold text-xl tracking-tighter uppercase">logerint</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400 z-20">
+      <a href="#banner" class="hover:text-[#6ee7b7] transition-colors">Banner</a>
+      <a href="#jugabilidad" class="hover:text-[#6ee7b7] transition-colors">Jugabilidad</a>
+      <a href="#historia" class="hover:text-[#6ee7b7] transition-colors">Historia</a>
+      <a href="#galeria" class="hover:text-[#6ee7b7] transition-colors">Galeria</a>
+      <a href="#contacto" class="hover:text-[#6ee7b7] transition-colors">Contacto</a>
+    </nav>
+
+    <a href="#" class="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-[#f59e0b] text-[#0a0908] text-xs font-bold rounded-xl hover:bg-[#b45309] transition z-20">Jugar</a>
+
+    <button id="mobile-menu-btn" class="md:hidden z-20 text-slate-300 hover:text-white focus:outline-none" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu-overlay" class="fixed inset-0 z-40 bg-[#0a0908]/90 hidden md:hidden items-center justify-center transition-opacity duration-300" onclick="closeMobileMenu()"></div>
+  <div id="mobile-menu-panel" class="fixed inset-y-0 right-0 z-50 w-full md:w-80 bg-[#0a0908] border-l border-[#1f2933]/40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col py-6 px-6 shadow-2xl">
+    <div class="flex justify-between items-center mb-8">
+      <span class="text-[#6ee7b7] font-extrabold text-lg tracking-tighter uppercase">logerint</span>
+      <button id="mobile-menu-close" class="text-slate-400 hover:text-white" onclick="closeMobileMenu()" aria-label="Cerrar menu">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <nav class="space-y-4">
+      <a href="#banner" class="block px-4 py-3 text-sm font-medium text-slate-300 rounded-lg hover:bg-[#110f0d] hover:text-[#6ee7b7] transition" onclick="closeMobileMenu()">Banner</a>
+      <a href="#jugabilidad" class="block px-4 py-3 text-sm font-medium text-slate-300 rounded-lg hover:bg-[#110f0d] hover:text-[#6ee7b7] transition" onclick="closeMobileMenu()">Jugabilidad</a>
+      <a href="#historia" class="block px-4 py-3 text-sm font-medium text-slate-300 rounded-lg hover:bg-[#110f0d] hover:text-[#6ee7b7] transition" onclick="closeMobileMenu()">Historia</a>
+      <a href="#galeria" class="block px-4 py-3 text-sm font-medium text-slate-300 rounded-lg hover:bg-[#110f0d] hover:text-[#6ee7b7] transition" onclick="closeMobileMenu()">Galeria</a>
+      <a href="#contacto" class="block px-4 py-3 text-sm font-medium text-slate-300 rounded-lg hover:bg-[#110f0d] hover:text-[#6ee7b7] transition" onclick="closeMobileMenu()">Contacto</a>
+    </nav>
+    <div class="mt-auto pt-8">
+      <a href="#" class="flex items-center gap-2 px-6 py-3 bg-[#f59e0b] text-[#0a0908] text-sm font-bold rounded-xl hover:bg-[#b45309] transition w-full justify-center" onclick="closeMobileMenu()">Jugar</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const closeBtn = document.getElementById("mobile-menu-close");
+  const overlay = document.getElementById("mobile-menu-overlay");
+  const panel = document.getElementById("mobile-menu-panel");
+
+  function openMobileMenu() {
+    panel.classList.remove("translate-x-full");
+    overlay.classList.remove("hidden");
+    btn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMobileMenu() {
+    panel.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+    btn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  btn?.addEventListener("click", openMobileMenu);
+  closeBtn?.addEventListener("click", closeMobileMenu);
+  overlay?.addEventListener("click", closeMobileMenu);
+</script>
