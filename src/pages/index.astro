@@ -1,16 +1,66 @@
 ---
+import Layout from "../layouts/Layout.astro";
+
+// Datos de ejemplo para tus proyectos o demos
+const proyectos = [
+  {
+    titulo: "E-commerce de Ropa (Demo)",
+    descripcion: "Vitrina virtual con filtros dinámicos y pasarela simulada.",
+    link: "#",
+    tag: "Tienda / JetEngine"
+  },
+  {
+    titulo: "Landing Inmobiliaria",
+    descripcion: "Diseño ultrarrápido y optimizado para conversión comercial.",
+    link: "#",
+    tag: "Landing Page"
+  },
+  {
+    titulo: "Web Corporativa B2B",
+    descripcion: "Arquitectura limpia orientada a captación de leads.",
+    link: "#",
+    tag: "Corporativo"
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout titulo="Mi Portafolio Profesional">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    
+    <!-- Hero / Presentación -->
+    <section class="mb-16">
+      <span class="text-sky-400 font-semibold text-sm uppercase tracking-wider">Desarrollo Web & Maquetas de Alto Rendimiento</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold mt-3 tracking-tight">
+        Hola, soy desarrollador web.
+      </h1>
+      <p class="text-slate-400 text-lg mt-4 max-w-2xl">
+        Construyo soluciones digitales rápidas, funcionales y atractivas que potencian negocios. Aquí puedes explorar mis últimas demostraciones y prototipos.
+      </p>
+    </section>
+
+    <!-- Sección de Proyectos / Demos -->
+    <section>
+      <h2 class="text-2xl font-bold mb-6 border-b border-slate-800 pb-3">Demos Destacadas</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {proyectos.map((proyecto) => (
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-sky-500/50 transition flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 bg-sky-950 text-sky-400 text-xs font-medium rounded-full mb-4">
+                {proyecto.tag}
+              </span>
+              <h3 class="text-xl font-bold">{proyecto.titulo}</h3>
+              <p class="text-slate-400 text-sm mt-2">{proyecto.descripcion}</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-800/60 flex justify-between items-center">
+              <a href={proyecto.link} class="text-sky-400 text-sm font-semibold hover:underline">
+                Ver demostración →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </main>
+</Layout>

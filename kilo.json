@@ -1,0 +1,49 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "model": "kilo/kilo-auto/free",
+  "default_agent": "code",
+  "instructions": [
+    "AGENTS.md",
+    "src/**/README.md"
+  ],
+  "permission": {
+    "edit": {
+      "src/components/**": "allow",
+      "src/layouts/**": "allow",
+      "src/pages/**": "allow",
+      "src/data/**": "allow",
+      "src/utils/**": "allow",
+      "src/styles/**": "allow",
+      "*.json": "allow",
+      "*.ts": "allow",
+      "*.js": "allow",
+      "*.mjs": "allow",
+      "*.astro": "allow",
+      "*.css": "allow",
+      ".kilo/**": "allow",
+      "public/**": "ask",
+      "dist/**": "deny",
+      ".astro/**": "deny",
+      "node_modules/**": "deny"
+    },
+    "bash": {
+      "npm run *": "allow",
+      "pnpm *": "allow",
+      "yarn *": "allow",
+      "bun *": "allow",
+      "astro *": "allow",
+      "git status": "allow",
+      "git diff*": "allow",
+      "git log*": "allow"
+    },
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "webfetch": "allow"
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+  "share": "manual"
+}

@@ -1,0 +1,78 @@
+{
+  "performance": {
+    "target": "100",
+    "metrics": ["lcp", "cls", "inp", "ttfb", "fcp"],
+    "rules": [
+      "minify_html",
+      "critical_css_inline",
+      "preload_critical_assets",
+      "lazy_load_non_critical",
+      "prefetch_links",
+      "compress_images",
+      "no_render_blocking_js",
+      "use_view_transitions_optimized"
+    ]
+  },
+  "architecture": {
+    "atomic_design": true,
+    "layers": ["atoms", "molecules", "organisms", "templates", "pages"],
+    "data_centralization": {
+      "enabled": true,
+      "sources": ["src/data/"],
+      "rules": ["no_inline_hardcoded_arrays", "no_duplicate_text", "single_source_of_truth"]
+    },
+    "components": {
+      "max_props": 6,
+      "no_inline_styles": true,
+      "props_interface": true,
+      "slot_preferred": true,
+      "split_by_purpose": true
+    }
+  },
+  "astro": {
+    "static_output": true,
+    "inline_stylesheets": "auto",
+    "compress_html": true,
+    "prefetch": {
+      "prefetchAll": false,
+      "defaultStrategy": "viewport"
+    },
+    "image_optimization": {
+      "format": ["webp", "avif"],
+      "quality": 80,
+      "lazy": true
+    }
+  },
+  "tailwind": {
+    "css_variables": true,
+    "no_arbitrary_values": "warn",
+    "use_design_tokens": true,
+    "utilities_preferred": true,
+    "minimize_custom_css": true
+  },
+  "code_style": {
+    "no_comments_unless_complex": true,
+    "no_icons": true,
+    "no_emojis": true,
+    "ascii_only": true,
+    "early_return": true,
+    "optional_chaining": true,
+    "nullish_coalescing": true,
+    "event_delegation": true,
+    "dry": true
+  },
+  "data": {
+    "structure": {
+      "projects": "src/data/projects.ts",
+      "skills": "src/data/skills.ts",
+      "social": "src/data/social.ts",
+      "config": "src/data/site-config.ts"
+    }
+  },
+  "build": {
+    "check_bundle_size": true,
+    "avoid_client_js": true,
+    "islands_minimal": true,
+    "css_purge": true
+  }
+}
