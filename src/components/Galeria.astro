@@ -1,0 +1,281 @@
+---
+---
+
+<section id="galeria" class="py-24 bg-game-bg-alt flex flex-col items-center">
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white tracking-tight">Galería</h2>
+    
+    <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+      
+      <!-- Tabs Navegación -->
+      <div class="flex md:flex-col gap-4 overflow-x-auto md:overflow-visible pb-4 md:pb-0 scrollbar-hide shrink-0 md:w-20">
+        
+        <!-- Tab 1: Personajes -->
+        <button class="tab-btn active relative group bg-game-element p-4 rounded-xl border border-game-accent flex justify-center items-center transition-all hover:bg-game-element-hover" data-target="tab-personajes" aria-label="Personajes">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 text-game-accent">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+          </svg>
+          <span class="absolute left-1/2 md:left-full md:top-1/2 -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 -bottom-10 md:bottom-auto md:ml-4 bg-game-bg text-game-accent px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 border border-green-900/50 shadow-lg">Personajes</span>
+        </button>
+
+        <!-- Tab 2: Escenarios -->
+        <button class="tab-btn relative group bg-game-element p-4 rounded-xl border border-game-border flex justify-center items-center transition-all hover:bg-game-element-hover hover:border-gray-600" data-target="tab-escenarios" aria-label="Escenarios">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 text-gray-400 group-hover:text-game-accent transition-colors">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          <span class="absolute left-1/2 md:left-full md:top-1/2 -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 -bottom-10 md:bottom-auto md:ml-4 bg-game-bg text-game-accent px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 border border-green-900/50 shadow-lg">Escenarios</span>
+        </button>
+
+        <!-- Tab 3: Objetos -->
+        <button class="tab-btn relative group bg-game-element p-4 rounded-xl border border-game-border flex justify-center items-center transition-all hover:bg-game-element-hover hover:border-gray-600" data-target="tab-objetos" aria-label="Objetos">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 text-gray-400 group-hover:text-game-accent transition-colors">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+          </svg>
+          <span class="absolute left-1/2 md:left-full md:top-1/2 -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 -bottom-10 md:bottom-auto md:ml-4 bg-game-bg text-game-accent px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 border border-green-900/50 shadow-lg">Objetos</span>
+        </button>
+
+        <!-- Tab 4: Enemigos -->
+        <button class="tab-btn relative group bg-game-element p-4 rounded-xl border border-game-border flex justify-center items-center transition-all hover:bg-game-element-hover hover:border-gray-600" data-target="tab-enemigos" aria-label="Enemigos">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 text-gray-400 group-hover:text-game-accent transition-colors">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span class="absolute left-1/2 md:left-full md:top-1/2 -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 -bottom-10 md:bottom-auto md:ml-4 bg-game-bg text-game-accent px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 border border-green-900/50 shadow-lg">Enemigos</span>
+        </button>
+
+      </div>
+      
+      <!-- Contenedor Principal de la Galería -->
+      <div class="flex-grow bg-game-card rounded-2xl border border-game-border p-6 md:p-8 min-h-[500px] shadow-xl relative overflow-hidden">
+        
+        <!-- Contenido Tab 1: Personajes -->
+        <div id="tab-personajes" class="tab-content block animate-fade-in">
+          <h3 class="text-2xl font-bold text-game-accent mb-6 border-b border-game-border pb-3">Personajes</h3>
+          <div class="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+            
+            <!-- Item Galería -->
+            <div class="aspect-square bg-game-bg rounded-xl border-2 border-game-border hover:border-yellow-600 transition-all duration-300 flex justify-center items-center relative group cursor-pointer galeria-item overflow-hidden shadow-inner" 
+                 data-img="/images/Loggy1.png" 
+                 data-title="Loggy" 
+                 data-desc="Loggy es el intrépido aventurero que se adentra en el laberinto. Siempre listo para resolver un puzle.">
+              <img src="/images/Loggy1.png" alt="Loggy" class="w-3/4 h-3/4 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.1)] group-hover:scale-110 transition-transform duration-300" loading="lazy" />
+              <!-- Tooltip del Item -->
+              <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-3 text-center">
+                <span class="text-yellow-500 font-bold text-sm md:text-base mb-1">Loggy</span>
+                <span class="text-gray-300 text-xs line-clamp-2">Ver detalles</span>
+              </div>
+            </div>
+
+            <!-- Slots Vacíos Inventario -->
+            {Array.from({ length: 11 }).map(() => (
+              <div class="aspect-square bg-game-bg/50 rounded-xl border-2 border-game-border/50 flex justify-center items-center opacity-50">
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+        <!-- Contenido Tab 2: Escenarios -->
+        <div id="tab-escenarios" class="tab-content hidden animate-fade-in">
+          <h3 class="text-2xl font-bold text-game-accent mb-6 border-b border-game-border pb-3">Escenarios</h3>
+          <div class="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+            
+            <!-- Item Galería -->
+            <div class="aspect-square bg-game-bg rounded-xl border-2 border-game-border hover:border-yellow-600 transition-all duration-300 flex justify-center items-center relative group cursor-pointer galeria-item overflow-hidden shadow-inner" 
+                 data-img="/images/BG2.jpg" 
+                 data-title="Mazmorra Principal" 
+                 data-desc="Un lugar oscuro lleno de misterios y peligros, donde los caminos cambian constantemente.">
+              <img src="/images/BG2.jpg" alt="Mazmorra Principal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy" />
+              <!-- Tooltip del Item -->
+              <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-3 text-center">
+                <span class="text-yellow-500 font-bold text-sm md:text-base mb-1">Mazmorra Principal</span>
+                <span class="text-gray-300 text-xs line-clamp-2">Ver detalles</span>
+              </div>
+            </div>
+
+            <!-- Slots Vacíos Inventario -->
+            {Array.from({ length: 11 }).map(() => (
+              <div class="aspect-square bg-game-bg/50 rounded-xl border-2 border-game-border/50 flex justify-center items-center opacity-50">
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+        <!-- Contenido Tab 3: Objetos -->
+        <div id="tab-objetos" class="tab-content hidden animate-fade-in">
+          <h3 class="text-2xl font-bold text-game-accent mb-6 border-b border-game-border pb-3">Objetos</h3>
+          <div class="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+            {Array.from({ length: 12 }).map(() => (
+              <div class="aspect-square bg-game-bg/50 rounded-xl border-2 border-game-border/50 flex justify-center items-center opacity-50">
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Contenido Tab 4: Enemigos -->
+        <div id="tab-enemigos" class="tab-content hidden animate-fade-in">
+          <h3 class="text-2xl font-bold text-game-accent mb-6 border-b border-game-border pb-3">Enemigos</h3>
+          <div class="grid grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+            {Array.from({ length: 12 }).map(() => (
+              <div class="aspect-square bg-game-bg/50 rounded-xl border-2 border-game-border/50 flex justify-center items-center opacity-50">
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-50 bg-[#000000ee] hidden justify-center items-center p-4 md:p-12 opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+  <button id="lightbox-close" class="absolute top-6 right-6 text-gray-400 hover:text-white bg-game-element rounded-full p-2 transition-colors border border-game-border-alt hover:border-gray-500 focus:outline-none" aria-label="Cerrar galería">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  
+  <div class="max-w-6xl w-full flex flex-col items-center transform scale-95 transition-transform duration-300" id="lightbox-content">
+    <div class="relative w-full max-h-[60vh] flex justify-center mb-6">
+      <img id="lightbox-img" src="" alt="" class="max-h-[60vh] w-auto object-contain rounded-lg shadow-[0_0_30px_rgba(0,0,0,0.5)] border border-game-border" />
+    </div>
+    <div class="text-center bg-game-card border border-game-border p-6 rounded-xl w-full md:w-3/4 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 to-yellow-400"></div>
+      <h4 id="lightbox-title" class="text-3xl font-bold text-yellow-500 mb-3"></h4>
+      <p id="lightbox-desc" class="text-gray-300 text-lg leading-relaxed"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Lógica de Tabs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remover estado activo de todos los botones
+        tabBtns.forEach(b => {
+          b.classList.remove('border-game-accent');
+          b.classList.add('border-game-border');
+          const svg = b.querySelector('svg');
+          if(svg) {
+            svg.classList.remove('text-game-accent');
+            svg.classList.add('text-gray-400');
+          }
+        });
+
+        // Ocultar todos los contenidos
+        tabContents.forEach(content => {
+          content.classList.add('hidden');
+          content.classList.remove('block');
+        });
+
+        // Activar botón actual
+        btn.classList.add('border-game-accent');
+        btn.classList.remove('border-game-border');
+        const activeSvg = btn.querySelector('svg');
+        if(activeSvg) {
+          activeSvg.classList.add('text-game-accent');
+          activeSvg.classList.remove('text-gray-400');
+        }
+
+        // Mostrar contenido actual
+        const targetId = btn.getAttribute('data-target');
+        if (targetId) {
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) {
+            targetContent.classList.remove('hidden');
+            targetContent.classList.add('block');
+          }
+        }
+      });
+    });
+
+    // Lógica del Lightbox
+    const items = document.querySelectorAll('.galeria-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxContent = document.getElementById('lightbox-content');
+
+    const closeLightbox = () => {
+      if (lightbox && lightboxContent) {
+        lightbox.classList.remove('opacity-100');
+        lightboxContent.classList.remove('scale-100');
+        setTimeout(() => {
+          lightbox.classList.add('hidden');
+          lightbox.classList.remove('flex');
+        }, 300);
+      }
+    };
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.getAttribute('data-img');
+        const title = item.getAttribute('data-title');
+        const desc = item.getAttribute('data-desc');
+
+        if (imgSrc && lightboxImg) lightboxImg.src = imgSrc;
+        if (title && lightboxTitle) lightboxTitle.textContent = title;
+        if (desc && lightboxDesc) lightboxDesc.textContent = desc;
+
+        if (lightbox && lightboxContent) {
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          // Pequeño delay para que la transición css tome efecto tras quitar el 'hidden'
+          setTimeout(() => {
+            lightbox.classList.add('opacity-100');
+            lightboxContent.classList.add('scale-100');
+          }, 10);
+        }
+      });
+    });
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    // Cerrar al hacer click fuera del contenido
+    if (lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    }
+
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
+        closeLightbox();
+      }
+    });
+  });
+</script>

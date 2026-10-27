@@ -32,12 +32,12 @@ const slides = [
           loading="lazy"
           decoding="async"
         />
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0b100b]/70 via-[#0a0908]/80 to-[#0a0908]" />
+        <div class="absolute inset-0 bg-gradient-to-b from-game-bg-alt/70 via-game-bg/80 to-game-bg" />
       </div>
 
       <div class="relative z-20 text-center max-w-6xl mx-auto flex flex-col items-center">
         <span
-          class="inline-block px-4 py-1.5 rounded-full bg-[#110f0d]/80 border border-[#374151]/40 backdrop-blur-sm text-[#6ee7b7] text-xs font-semibold uppercase tracking-widest mb-6 data-animate"
+          class="inline-block px-4 py-1.5 rounded-full bg-game-bg-alt/80 border border-game-border-alt/40 backdrop-blur-sm text-game-accent text-xs font-semibold uppercase tracking-widest mb-6 data-animate"
           style="animation-delay: 0s"
         >
           {slide.subtitle}
@@ -49,7 +49,7 @@ const slides = [
           {slide.desc}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center data-animate" style="animation-delay: 0.45s">
-          <a href="#" class="px-8 py-3 bg-[#f59e0b] text-[#0a0908] font-bold rounded-xl hover:bg-[#b45309] transition">Jugar ahora</a>
+          <a href="#" class="px-8 py-3 bg-game-cta text-game-bg font-bold rounded-xl hover:bg-game-cta-hover transition">Jugar ahora</a>
           <a href="#historia" class="px-8 py-3 bg-transparent border border-slate-600 text-slate-200 font-medium rounded-xl hover:bg-slate-800/50 transition">Historia</a>
         </div>
       </div>
@@ -69,44 +69,50 @@ const slides = [
 </style>
 
 <script>
-  const slides = Array.from(document.querySelectorAll("#banner > div"));
-  let current = 0;
-  let interval;
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = Array.from(document.querySelectorAll("#banner > div"));
+    let current = 0;
+    let interval;
 
-  function animateElements(el) {
-    const items = el.querySelectorAll("[data-animate]");
-    items.forEach((it) => {
-      it.classList.remove("data-animate");
-      void it.offsetHeight;
-      it.classList.add("data-animate");
-    });
-  }
+    function animateElements(el) {
+      if (!el) return;
+      const items = el.querySelectorAll("[data-animate]");
+      items.forEach((it) => {
+        it.classList.remove("data-animate");
+        void it.offsetHeight;
+        it.classList.add("data-animate");
+      });
+    }
 
-  function showSlide(index) {
-    slides.forEach((s, i) => {
-      if (i === index) {
-        s.classList.remove("opacity-0", "pointer-events-none");
-        s.classList.add("opacity-100");
-      } else {
-        s.classList.remove("opacity-100");
-        s.classList.add("opacity-0", "pointer-events-none");
-      }
-    });
-    current = index;
-    animateElements(slides[index]);
-  }
+    function showSlide(index) {
+      slides.forEach((s, i) => {
+        if (i === index) {
+          s.classList.remove("opacity-0", "pointer-events-none");
+          s.classList.add("opacity-100");
+        } else {
+          s.classList.remove("opacity-100");
+          s.classList.add("opacity-0", "pointer-events-none");
+        }
+      });
+      current = index;
+      if(slides[index]) animateElements(slides[index]);
+    }
 
-  function nextSlide() {
-    showSlide((current + 1) % slides.length);
-  }
+    function nextSlide() {
+      if (slides.length === 0) return;
+      showSlide((current + 1) % slides.length);
+    }
 
-  interval = setInterval(nextSlide, 5000);
+    if (slides.length > 0) {
+      interval = setInterval(nextSlide, 5000);
 
-  const banner = document.getElementById("banner");
-  banner?.addEventListener("mouseenter", () => clearInterval(interval));
-  banner?.addEventListener("mouseleave", () => {
-    interval = setInterval(nextSlide, 5000);
+      const banner = document.getElementById("banner");
+      banner?.addEventListener("mouseenter", () => clearInterval(interval));
+      banner?.addEventListener("mouseleave", () => {
+        interval = setInterval(nextSlide, 5000);
+      });
+
+      animateElements(slides[0]);
+    }
   });
-
-  animateElements(slides[0]);
 </script>

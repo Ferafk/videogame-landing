@@ -1,0 +1,184 @@
+---
+const slides = [
+  {
+    image: "/images/Loggy1.png",
+    title: "Mecánica Principal",
+    description: "Explora mazmorras y resuelve intrincados acertijos moviendo bloques y activando interruptores para abrir nuevas áreas. Cada nivel presenta un desafío único que pondrá a prueba tu ingenio."
+  },
+  {
+    image: "/images/Loggy1.png",
+    title: "Combate Táctico",
+    description: "Enfréntate a criaturas en combates que requieren estrategia y posicionamiento. Aprende los patrones de tus enemigos y utiliza tu entorno a tu favor para salir victorioso."
+  },
+  {
+    image: "/images/Loggy1.png",
+    title: "Exploración",
+    description: "Descubre secretos ocultos en cada rincón del laberinto. Recolecta objetos únicos que te otorgarán nuevas habilidades para superar obstáculos previamente infranqueables."
+  }
+];
+---
+
+<section id="jugabilidad" class="py-24 bg-game-bg text-white flex flex-col items-center">
+  <div class="max-w-6xl mx-auto px-6 w-full relative">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white tracking-tight">Jugabilidad</h2>
+    
+    <!-- Slider Container -->
+    <div class="slider-wrapper relative group">
+      <!-- Botón Anterior -->
+      <button 
+        id="prevBtn" 
+        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 bg-game-element hover:bg-game-element-hover text-white p-3 rounded-full shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 hidden md:block border border-game-border"
+        aria-label="Diapositiva anterior"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+
+      <!-- Slides -->
+      <div 
+        id="slider" 
+        class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth pb-8"
+        style="-ms-overflow-style: none; scrollbar-width: none;"
+      >
+        {slides.map((slide, index) => (
+          <div class="w-full flex-shrink-0 snap-center px-4" data-index={index}>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              
+              <!-- Columna Imagen -->
+              <div class="flex justify-center items-center order-1 md:order-1">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                  <img 
+                    src={slide.image} 
+                    alt="Loggy, el protagonista" 
+                    class="object-contain w-full h-full animate-[floating_3s_ease-in-out_infinite]"
+                  />
+                </div>
+              </div>
+
+              <!-- Columna Tarjeta -->
+              <div class="order-2 md:order-2 flex justify-center">
+                <div class="bg-game-card p-8 md:p-10 rounded-2xl border border-game-border shadow-2xl relative overflow-hidden">
+                  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-game-accent to-game-accent"></div>
+                  <h3 class="text-2xl md:text-3xl font-bold mb-4 text-game-accent">{slide.title}</h3>
+                  <p class="text-gray-300 leading-relaxed text-lg">
+                    {slide.description}
+                  </p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Botón Siguiente -->
+      <button 
+        id="nextBtn" 
+        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 bg-game-element hover:bg-game-element-hover text-white p-3 rounded-full shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 hidden md:block border border-game-border"
+        aria-label="Siguiente diapositiva"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Paginación/Dots -->
+    <div class="flex justify-center gap-3 mt-6">
+      {slides.map((_, index) => (
+        <button 
+          class={`dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-game-accent w-6' : 'bg-gray-600 hover:bg-gray-500'}`}
+          data-index={index}
+          aria-label={`Ir a diapositiva ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Ocultar barra de scroll para el slider pero mantener funcionalidad */
+  .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+  }
+  
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+</style>
+
+<script>
+  // Lógica del Slider
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('slider');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (!slider || !prevBtn || !nextBtn) return;
+
+    let currentIndex = 0;
+    const slideCount = dots.length;
+
+    // Función para actualizar los puntos (dots)
+    const updateDots = (index: number) => {
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('bg-gray-600');
+          dot.classList.add('bg-game-accent', 'w-6');
+        } else {
+          dot.classList.remove('bg-game-accent', 'w-6');
+          dot.classList.add('bg-gray-600');
+        }
+      });
+    };
+
+    // Hacer scroll a una diapositiva
+    const goToSlide = (index: number) => {
+      if (index < 0 || index >= slideCount) return;
+      
+      const slideWidth = slider.clientWidth;
+      slider.scrollTo({
+        left: index * slideWidth,
+        behavior: 'smooth'
+      });
+      currentIndex = index;
+      updateDots(currentIndex);
+    };
+
+    // Eventos botones
+    prevBtn.addEventListener('click', () => {
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : slideCount - 1;
+      goToSlide(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = currentIndex < slideCount - 1 ? currentIndex + 1 : 0;
+      goToSlide(currentIndex);
+    });
+
+    // Eventos puntos
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToSlide(index));
+    });
+
+    // Actualizar índice actual basado en el scroll manual del usuario
+    let scrollTimeout: number;
+    slider.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(() => {
+        const scrollPosition = slider.scrollLeft;
+        const slideWidth = slider.clientWidth;
+        const newIndex = Math.round(scrollPosition / slideWidth);
+        
+        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < slideCount) {
+          currentIndex = newIndex;
+          updateDots(currentIndex);
+        }
+      }, 50);
+    });
+  });
+</script>

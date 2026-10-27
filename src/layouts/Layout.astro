@@ -14,8 +14,11 @@ const { titulo } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{titulo}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#0a0908] text-slate-100 min-h-screen antialiased selection:bg-[#f59e0b] selection:text-white">
+  <body class="bg-game-bg text-slate-100 min-h-screen antialiased selection:bg-game-cta selection:text-white">
     <!-- Aquí se inyectará el contenido de cada página -->
     <slot />
   </body>

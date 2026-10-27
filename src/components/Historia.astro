@@ -1,0 +1,193 @@
+---
+const slides = [
+  {
+    image: "/images/Loggy1.png",
+    title: "El Despertar",
+    description: "En las profundidades de un laberinto olvidado, Loggy despierta sin recuerdos. Guiado solo por un instinto de supervivencia, debe encontrar la salida antes de que la oscuridad lo consuma por completo."
+  },
+  {
+    image: "/images/BG2.jpg",
+    title: "El Misterio del Laberinto",
+    description: "A medida que avanza, descubre antiguos grabados que cuentan la historia de una civilización perdida. El laberinto no es solo una prisión, sino una prueba diseñada para proteger un secreto ancestral."
+  },
+  {
+    image: "/images/BG2.jpg",
+    title: "La Confrontación Final",
+    description: "En el corazón del laberinto aguarda el Guardián, una entidad nacida de las sombras. Loggy deberá usar todo lo aprendido para superar este último desafío y reclamar su libertad."
+  }
+];
+---
+
+<section id="historia" class="relative py-24 min-h-screen text-white flex flex-col items-center overflow-hidden">
+  <!-- Background Image with Blur -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-game-overlay/80 z-10"></div>
+    <img id="historia-bg" src={slides[0].image} alt="Background" class="w-full h-full object-cover blur-1xl scale-110 transition-opacity duration-500 opacity-40" />
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 w-full relative z-10 flex flex-col h-full">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white tracking-tight">Historia</h2>
+    
+    <!-- Vertical Slider Container -->
+    <div class="relative flex-grow flex items-center justify-center h-[500px] md:h-[600px]">
+      
+      <!-- Botón Arriba -->
+      <button 
+        id="prevStoryBtn" 
+        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 z-20 bg-game-element hover:bg-game-element-hover text-white p-3 rounded-full shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 hidden md:block border border-game-border"
+        aria-label="Diapositiva anterior"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
+
+      <!-- Slides -->
+      <div 
+        id="story-slider" 
+        class="flex flex-col overflow-y-auto snap-y snap-mandatory scrollbar-hide scroll-smooth h-full w-full"
+        style="-ms-overflow-style: none; scrollbar-width: none;"
+      >
+        {slides.map((slide, index) => (
+          <div class="w-full h-full flex-shrink-0 snap-center px-4 py-8 flex items-center justify-center" data-index={index} data-image={slide.image}>
+            <div class="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              
+              <!-- Columna Tarjeta (Texto a la izquierda) -->
+              <div class="order-2 md:order-1 flex justify-center">
+                <div class="bg-game-card/90 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-game-border shadow-2xl relative overflow-hidden w-full">
+                  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-game-accent to-game-accent"></div>
+                  <h3 class="text-2xl md:text-3xl font-bold mb-4 text-game-accent">{slide.title}</h3>
+                  <p class="text-gray-300 leading-relaxed text-lg">
+                    {slide.description}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Columna Imagen (Imagen a la derecha) -->
+              <div class="flex justify-center items-center order-1 md:order-2">
+                <div class="relative drop-shadow-[0_0_25px_rgba(0,0,0,0.5)]">
+                  <img 
+                    src={slide.image} 
+                    alt={slide.title} 
+                    class="object-contain w-full h-full animate-[floating_3s_ease-in-out_infinite]"
+                  />
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Botón Abajo -->
+      <button 
+        id="nextStoryBtn" 
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-4 z-20 bg-game-element hover:bg-game-element-hover text-white p-3 rounded-full shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 hidden md:block border border-game-border"
+        aria-label="Siguiente diapositiva"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Paginación/Dots (Horizontales debajo) -->
+    <div class="flex justify-center gap-3 mt-8 z-10">
+      {slides.map((_, index) => (
+        <button 
+          class={`story-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-game-accent w-6' : 'bg-gray-600 hover:bg-gray-500'}`}
+          data-index={index}
+          aria-label={`Ir a diapositiva ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('story-slider');
+    const prevBtn = document.getElementById('prevStoryBtn');
+    const nextBtn = document.getElementById('nextStoryBtn');
+    const dots = document.querySelectorAll('.story-dot');
+    const bgImage = document.getElementById('historia-bg') as HTMLImageElement;
+    
+    if (!slider || !prevBtn || !nextBtn || !bgImage) return;
+
+    let currentIndex = 0;
+    const slideCount = dots.length;
+    const slides = slider.querySelectorAll('[data-index]');
+
+    const updateBackground = (index: number) => {
+      const slide = slides[index] as HTMLElement;
+      if (slide && slide.dataset.image) {
+        bgImage.style.opacity = '0';
+        setTimeout(() => {
+          bgImage.src = slide.dataset.image!;
+          bgImage.style.opacity = '0.4';
+        }, 300);
+      }
+    };
+
+    const updateDots = (index: number) => {
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('bg-gray-600');
+          dot.classList.add('bg-game-accent', 'w-6');
+        } else {
+          dot.classList.remove('bg-game-accent', 'w-6');
+          dot.classList.add('bg-gray-600');
+        }
+      });
+    };
+
+    const goToSlide = (index: number) => {
+      if (index < 0 || index >= slideCount) return;
+      
+      const slideHeight = slider.clientHeight;
+      slider.scrollTo({
+        top: index * slideHeight,
+        behavior: 'smooth'
+      });
+      currentIndex = index;
+      updateDots(currentIndex);
+      updateBackground(currentIndex);
+    };
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : slideCount - 1;
+      goToSlide(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = currentIndex < slideCount - 1 ? currentIndex + 1 : 0;
+      goToSlide(currentIndex);
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToSlide(index));
+    });
+
+    let scrollTimeout: number;
+    slider.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(() => {
+        const scrollPosition = slider.scrollTop;
+        const slideHeight = slider.clientHeight;
+        const newIndex = Math.round(scrollPosition / slideHeight);
+        
+        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < slideCount) {
+          currentIndex = newIndex;
+          updateDots(currentIndex);
+          updateBackground(currentIndex);
+        }
+      }, 100);
+    });
+  });
+</script>

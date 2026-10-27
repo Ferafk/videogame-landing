@@ -1,87 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --color-bg: #020617;
-  --color-surface: #0f172a;
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --color-accent: #38bdf8;
-  --color-accent-hover: #0ea5e9;
-  --color-border: #1e293b;
-
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
-
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
-  --space-4xl: 6rem;
-
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-
-  --container-max: 64rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
 @theme inline {
-  --color-bg: var(--color-bg);
-  --color-surface: var(--color-surface);
-  --color-text-primary: var(--color-text-primary);
-  --color-text-secondary: var(--color-text-secondary);
-  --color-accent: var(--color-accent);
-  --color-accent-hover: var(--color-accent-hover);
-  --color-border: var(--color-border);
+  /* Fondo principal y secundarios */
+  --color-game-bg: #0a0908;
+  --color-game-bg-alt: #110f0d;
+  --color-game-overlay: #0c140c;
+  
+  /* Cards y Elementos UI */
+  --color-game-card: #151515;
+  --color-game-element: #1a1a1a;
+  --color-game-element-hover: #2a2a2a;
+  
+  /* Colores de Marca y Acción */
+  --color-game-accent: #6ee7b7;
+  --color-game-cta: #f59e0b;
+  --color-game-cta-hover: #d97706;
+  
+  /* Bordes */
+  --color-game-border: #1f2933;
+  --color-game-border-alt: #374151;
 
-  --font-family-sans: var(--font-sans);
-  --font-size-xs: var(--font-size-xs);
-  --font-size-sm: var(--font-size-sm);
-  --font-size-base: var(--font-size-base);
-  --font-size-lg: var(--font-size-lg);
-  --font-size-xl: var(--font-size-xl);
-  --font-size-2xl: var(--font-size-2xl);
-  --font-size-3xl: var(--font-size-3xl);
-  --font-size-4xl: var(--font-size-4xl);
-  --font-size-5xl: var(--font-size-5xl);
-
-  --spacing-xs: var(--space-xs);
-  --spacing-sm: var(--space-sm);
-  --spacing-md: var(--space-md);
-  --spacing-lg: var(--space-lg);
-  --spacing-xl: var(--space-xl);
-  --spacing-2xl: var(--space-2xl);
-  --spacing-3xl: var(--space-3xl);
-  --spacing-4xl: var(--space-4xl);
-
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-xl: var(--radius-xl);
-
-  --max-width-container: var(--container-max);
+  /* Fuente global de todo el sitio */
+  --font-family-sans: 'Outfit', system-ui, sans-serif;
 }
 
 html {
-  font-family: var(--font-sans);
+  font-family: var(--font-family-sans);
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
+  background-color: var(--color-game-bg);
+  color: #f1f5f9;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
